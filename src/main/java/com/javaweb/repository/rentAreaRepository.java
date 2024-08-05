@@ -6,5 +6,5 @@ import java.util.Map;
 import com.javaweb.repository.entity.rentArea;
 
 public interface rentAreaRepository {
- List<rentArea> Area (Map<String,Object> param); 
+ List<rentArea> Area (Integer id); 
 }

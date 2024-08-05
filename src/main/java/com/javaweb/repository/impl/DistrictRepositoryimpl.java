@@ -19,25 +19,23 @@ public class DistrictRepositoryimpl implements DistrictRepository {
 	private final String USER = "root";
 	private final String PASS = "30102004";
 @Override
-public List<DistrictEntity> findAll() {
-	List<DistrictEntity> de = new ArrayList<>();
+public DistrictEntity findAll(Integer id) {
+	DistrictEntity de = new DistrictEntity();
 	StringBuilder sql = new StringBuilder("select * from district");
+	sql.append(" where id = "+id+"");
+
 	try (Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
 			 Statement stmt = conn.createStatement();
 	   	    ResultSet rs = stmt.executeQuery(sql.toString());){
 		while (rs.next()) {
-			DistrictEntity a = new DistrictEntity();
-			a.setId(rs.getInt("id"));
-			a.setCode(rs.getString("code"));
-			a.setName(rs.getString("name"));
-			de.add(a);
+			de.setName(rs.getString("name"));
 		}
 		
 	} catch (Exception e) {
 	
 	}
-	
 	return de;
+	
 	
 }
 }
