@@ -21,26 +21,16 @@ private final String DB_URL= "jdbc:mysql://localhost:3306/estatebasic" ;
 private final String USER = "root";
 private final String PASS = "30102004";
 @Override
-	public List<rentArea> Area(Map<String, Object> param) {
+public List<rentArea> Area(Integer id) {
 		List <rentArea> rt = new ArrayList<>();
 		StringBuilder sql = new StringBuilder("select id , value , buildingid from rentarea");
-		sql.append(" where 1=1");
-		String areadau = (String)param.get("areafrom");
-		String areacuoi = (String)param.get("areato");
-		if((areadau!=null && !areadau.equals("")))
-		{
-			sql.append(" and rentarea.value >= "+areadau+" ");
-		}
-		if(areacuoi!=null && !areacuoi.equals("")) {
-			sql.append(" and rentarea.value <= "+areacuoi+" ");
-		}
+		sql.append(" where rentarea.buildingid = "+id+" ");
 		try(Connection conm = DriverManager.getConnection(DB_URL,USER,PASS);
 			   	 Statement stmt = conm.createStatement();
 		   	    ResultSet rs = stmt.executeQuery(sql.toString());){
 			while(rs.next()) {
 			rentArea are = new rentArea();
 				are.setValue(rs.getInt("value"));
-				are.setBuildingid(rs.getInt("buildingid"));
 				rt.add(are);
 			}
 		} catch (Exception e) {
