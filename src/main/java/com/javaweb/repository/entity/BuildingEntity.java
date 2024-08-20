@@ -1,113 +1,189 @@
 package com.javaweb.repository.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name= "building")
 public class BuildingEntity {
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name="name")
 	private String name;
+	
+	@Column (name="street")
 	private String street;
+	
+	@Column (name = "ward")
 	private String ward;
-	private Integer districtid;
+	
+//	@Column (name="districtid")
+//	private Long districtid;
+	
+	@Column (name = "structure")
 	private String structure;
-	private Integer numberOfbasement;
-	private Integer floorarea;
+	
+	@Column (name = "numberofbasement")
+	private Long numberofbasement;
+	
+	@Column (name="floorarea")
+	private Long floorarea;
+	
+	@Column (name="direction")
 	private String direction;
-	private Integer level;
-	private Integer rentprice;
-    private Integer servicefee;
-    private Integer brokeragefee;
-	public Integer getServicefee() {
-		return servicefee;
+	
+	@Column(name = "level")
+	private Long level;
+	
+	@Column (name = "rentprice")
+	private Long rentprice;
+	
+	@Column (name = "servicefee")
+    private Long servicefee;
+	
+	@Column (name = "brokeragefee")
+    private Long brokeragefee;
+
+	
+	
+	@OneToMany(mappedBy = "building",fetch = FetchType.LAZY)
+	private List <rentArea> rent = new ArrayList<>();
+	
+	public List<rentArea> getRent() {
+		return rent;
 	}
-	public void setServicefee(Integer servicefee) {
-		this.servicefee = servicefee;
+
+	public void setRent(List<rentArea> rent) {
+		this.rent = rent;
 	}
-	public Integer getBrokeragefee() {
-		return brokeragefee;
+	
+	@ManyToOne()
+	@JoinColumn(name ="districtid")
+	private DistrictEntity district;
+	
+	public DistrictEntity getDistrict() {
+		return district;
 	}
-	public void setBrokeragefee(Integer brokeragefee) {
-		this.brokeragefee = brokeragefee;
+
+	public void setDistrict(DistrictEntity district) {
+		this.district = district;
 	}
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
-	private String managername;
-	private String managerphone;
-	public Integer getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getStreet() {
 		return street;
 	}
+
 	public void setStreet(String street) {
 		this.street = street;
 	}
+
 	public String getWard() {
 		return ward;
 	}
+
 	public void setWard(String ward) {
 		this.ward = ward;
 	}
-	
-	public Integer getDistrictid() {
-		return districtid;
-	}
-	public void setDistrictid(Integer districtid) {
-		this.districtid = districtid;
-	}
+
+//	public Long getDistrictid() {
+//		return districtid;
+//	}
+//
+//	public void setDistrictid(Long districtid) {
+//		this.districtid = districtid;
+//	}
+
 	public String getStructure() {
 		return structure;
 	}
+
 	public void setStructure(String structure) {
 		this.structure = structure;
 	}
-	public Integer getNumberOfbasement() {
-		return numberOfbasement;
+
+	public Long getNumberOfbasement() {
+		return numberofbasement;
 	}
-	public void setNumberOfbasement(Integer numberOfbasement) {
-		this.numberOfbasement = numberOfbasement;
+
+	public void setNumberOfbasement(Long numberOfbasement) {
+		this.numberofbasement = numberOfbasement;
 	}
-	public Integer getFloorarea() {
+
+	public Long getFloorarea() {
 		return floorarea;
 	}
-	public void setFloorarea(Integer floorarea) {
+
+	public void setFloorarea(Long floorarea) {
 		this.floorarea = floorarea;
 	}
+
 	public String getDirection() {
 		return direction;
 	}
+
 	public void setDirection(String direction) {
 		this.direction = direction;
 	}
-	public Integer getLevel() {
+
+	public Long getLevel() {
 		return level;
 	}
-	public void setLevel(int i) {
-		this.level = i;
+
+	public void setLevel(Long level) {
+		this.level = level;
 	}
-	public Integer getRentprice() {
+
+	public Long getRentprice() {
 		return rentprice;
 	}
-	public void setRentprice(Integer rentprice) {
+
+	public void setRentprice(Long rentprice) {
 		this.rentprice = rentprice;
 	}
-	public String getManagername() {
-		return managername;
+
+	public Long getServicefee() {
+		return servicefee;
 	}
-	public void setManagername(String managername) {
-		this.managername = managername;
+
+	public void setServicefee(Long servicefee) {
+		this.servicefee = servicefee;
 	}
-	public String getManagerphone() {
-		return managerphone;
+
+	public Long getBrokeragefee() {
+		return brokeragefee;
 	}
-	public void setManagerphone(String managerphone) {
-		this.managerphone = managerphone;
+
+	public void setBrokeragefee(Long brokeragefee) {
+		this.brokeragefee = brokeragefee;
 	}
 	
 }
