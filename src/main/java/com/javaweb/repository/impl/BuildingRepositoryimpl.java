@@ -128,7 +128,7 @@ sql.append(" group by b.id");
     	bd.setNumberOfbasement(rs.getInt("numberofbasement"));
     	bd.setRentprice(rs.getInt("rentprice"));
     	bd.setManagername(rs.getString("managername"));
-    	bd.setManagerphone(rs.getString("managerphonenumber"));
+    	bd.setManagerphonenumber(rs.getString("managerphonenumber"));
     	bd.setBrokeragefee(rs.getInt("brokeragefee"));
     	bd.setServicefee(rs.getInt("servicefee"));
     	 list.add(bd);

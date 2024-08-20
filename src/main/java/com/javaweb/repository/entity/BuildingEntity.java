@@ -29,7 +29,7 @@ public class BuildingEntity {
 		this.level = level;
 	}
 	private String managername;
-	private String managerphone;
+	private String managerphonenumber;
 	public Integer getId() {
 		return id;
 	}
@@ -103,11 +103,11 @@ public class BuildingEntity {
 	public void setManagername(String managername) {
 		this.managername = managername;
 	}
-	public String getManagerphone() {
-		return managerphone;
+	public String getManagerphonenumber() {
+		return managerphonenumber;
 	}
-	public void setManagerphone(String managerphone) {
-		this.managerphone = managerphone;
+	public void setManagerphonenumber(String managerphonenumber) {
+		this.managerphonenumber = managerphonenumber;
 	}
 	
 }

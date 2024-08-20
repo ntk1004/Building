@@ -24,7 +24,7 @@ public class BuildingSearchBuilderConverter {
                                                                                    .setRentpricefrom(MapUtil.getObject(param, "rentpricefrom", Long.class))
                                                                                    .setRentpriceto(MapUtil.getObject(param, "rentpriceto", Long.class))
                                                                                    .setManagername(MapUtil.getObject(param, "managername", String.class))
-                                                                                   .setManagerphonenumber(MapUtil.getObject(param, "managername", String.class))
+                                                                                   .setManagerphonenumber(MapUtil.getObject(param, "managerphonenumber", String.class))
                                                                                    .setType(type)
 	                                                                               .setNumberofbasement(MapUtil.getObject(param, "numberofbasement", Long.class))
 	                                                                               .build();
