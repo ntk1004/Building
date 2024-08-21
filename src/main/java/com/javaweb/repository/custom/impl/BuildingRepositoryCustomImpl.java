@@ -1,4 +1,6 @@
 package com.javaweb.repository.custom.impl;
+
+
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,10 +16,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 
-
 @Repository
 @Primary
-public class BuildingRepositoryimpl implements BuildingRepositoryCustom{
+public class BuildingRepositoryCustomImpl implements BuildingRepositoryCustom{
+	//JPA
 	@PersistenceContext
 	private EntityManager entityManager; 
 	
@@ -40,6 +42,7 @@ public class BuildingRepositoryimpl implements BuildingRepositoryCustom{
 	}
 	public static void queryNomal (BuildingSearchBuilder buildingSearchBuilder,StringBuilder where) {
 		try {
+			//java reflection
 			Field[] field = BuildingSearchBuilder.class.getDeclaredFields();
 			for(Field item : field) {
 				item.setAccessible(true);
@@ -97,7 +100,11 @@ public class BuildingRepositoryimpl implements BuildingRepositoryCustom{
 
 @Override
 public List<BuildingEntity> findAll(BuildingSearchBuilder buildingSearchBuilder) {
-	  
+	//JPQL :JPA query L
+	//String sql = "From BuildingEntity b";
+	// Query query = entityManager.createQuery(sql,BuildingEntity.class);
+	
+	//SQL Native  
 StringBuilder sql = new StringBuilder("select b.* from building b ");
  settable ( buildingSearchBuilder, sql) ;
 StringBuilder where =new StringBuilder (" where 1=1 ");

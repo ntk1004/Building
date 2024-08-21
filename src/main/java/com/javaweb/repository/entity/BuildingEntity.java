@@ -36,6 +36,10 @@ public class BuildingEntity {
 	@Column (name = "structure")
 	private String structure;
 	
+	@Column(name="managerphonenumber")
+	private String managerphonenumber;
+	
+	
 	@Column (name = "numberofbasement")
 	private Long numberofbasement;
 	
@@ -57,16 +61,17 @@ public class BuildingEntity {
 	@Column (name = "brokeragefee")
     private Long brokeragefee;
 
-	
+	 //lazy: tạm thời khong lay du lieu tu 1 building sang nhieu rentarea
+    //eager: laay luon tu 1 building se lay dc nhieu rentarea (lay tat ca cac bang lien quan)
 	
 	@OneToMany(mappedBy = "building",fetch = FetchType.LAZY)
-	private List <rentArea> rent = new ArrayList<>();
+	private List <RentAreaEntity> rent = new ArrayList<>();
 	
-	public List<rentArea> getRent() {
+	public List<RentAreaEntity> getRent() {
 		return rent;
 	}
 
-	public void setRent(List<rentArea> rent) {
+	public void setRent(List<RentAreaEntity> rent) {
 		this.rent = rent;
 	}
 	
@@ -76,6 +81,22 @@ public class BuildingEntity {
 	
 	public DistrictEntity getDistrict() {
 		return district;
+	}
+
+	public String getManagerphonenumber() {
+		return managerphonenumber;
+	}
+
+	public void setManagerphonenumber(String managerphonenumber) {
+		this.managerphonenumber = managerphonenumber;
+	}
+
+	public Long getNumberofbasement() {
+		return numberofbasement;
+	}
+
+	public void setNumberofbasement(Long numberofbasement) {
+		this.numberofbasement = numberofbasement;
 	}
 
 	public void setDistrict(DistrictEntity district) {
