@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.javaweb.modol.BuildingDTO;
-import com.javaweb.repository.DistrictRepository;
-import com.javaweb.repository.rentAreaRepository;
 import com.javaweb.repository.entity.BuildingEntity;
-import com.javaweb.repository.entity.DistrictEntity;
 import com.javaweb.repository.entity.rentArea;
 
 @Component

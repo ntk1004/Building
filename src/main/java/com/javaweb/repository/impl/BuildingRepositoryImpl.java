@@ -16,7 +16,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 @Repository
 @Primary
-public class JDBCBuildingRepositoryimpl implements BuildingRepository{
+public class BuildingRepositoryImpl implements BuildingRepository{
 	@PersistenceContext
 	private EntityManager entityManager; 
 	public static void settable (BuildingSearchBuilder buildingSearchBuilder,StringBuilder sql) {
